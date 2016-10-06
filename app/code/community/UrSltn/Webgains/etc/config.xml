@@ -37,4 +37,10 @@
             </ursltn_webgains>
         </models>
     </global>
+    <default>
+        <ursltn_webgains>
+            <active>1</active>
+            <debug>1</debug>
+        </ursltn_webgains>
+    </default>
 </config>
