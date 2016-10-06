@@ -21,11 +21,17 @@ on a production site.
 
 **Method 1:**
 
-Install via modman:
+  * Install via modman:
 
 ```sh
 modman init
 modman clone https://github.com/ur-sltn/webgains.git
+```
+
+  * Allow template symlinks in Magento admin:
+
+```
+Admin -> System -> Configuration -> [Advanced] Developer -> [Template Settings] Allow Symlinks: Yes
 ```
 
 ## [Change Log] (CHANGELOG.md)
