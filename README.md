@@ -24,6 +24,7 @@ on a production site.
 Install via modman:
 
 ```sh
+modman init
 modman clone https://github.com/ur-sltn/webgains.git
 ```
 
