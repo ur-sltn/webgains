@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Ur-Sltn Webgains
+ *
+ * NOTICE OF LICENSE
+ *
+ * Private Proprietary Software (https://ur-sltn.com/terms-of-service.php)
+ *
+ * @category   UrSltn
+ * @package    UrSltn_Webgains
+ * @copyright  Copyright (c) 2016 Ur-Sltn LTD (https://ur-sltn.com)
+ * @license    https://ur-sltn.com/terms-of-service.php  Private Proprietary Software
+ * @author     Shaughn Le Grange - Hatlen <me@shaughn.pro>
+ */
+-->
+<config>
+    <modules>
+        <UrSltn_Webgains>
+            <version>1.0.0</version>
+        </UrSltn_Webgains>
+    </modules>
+    <global>
+        <helpers>
+            <ursltn_webgains>
+                <class>UrSltn_Webgains_Helper</class>
+            </ursltn_webgains>
+        </helpers>
+        <blocks>
+            <ursltn_webgains>
+                <class>UrSltn_Webgains_Block</class>
+            </ursltn_webgains>
+        </blocks>
+        <models>
+            <ursltn_webgains>
+                <class>UrSltn_Webgains_Model</class>
+            </ursltn_webgains>
+        </models>
+    </global>
+</config>

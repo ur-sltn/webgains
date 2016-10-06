@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Ur-Sltn Webgains
+ *
+ * NOTICE OF LICENSE
+ *
+ * Private Proprietary Software (https://ur-sltn.com/terms-of-service.php)
+ *
+ * @category   UrSltn
+ * @package    UrSltn_Webgains
+ * @copyright  Copyright (c) 2016 Ur-Sltn LTD (https://ur-sltn.com)
+ * @license    https://ur-sltn.com/terms-of-service.php  Private Proprietary Software
+ * @author     Shaughn Le Grange - Hatlen <me@shaughn.pro>
+ */
+-->
+<config>
+    <tabs>
+        <ursltn translate="label">
+            <label><![CDATA[Ur-Sltn LTD]]></label>
+            <sort_order>1</sort_order>
+        </ursltn>
+    </tabs>
+    <sections>
+        <ursltn_webgains translate="label" module="ursltn_webgains">
+            <label>Webgains</label>
+            <tab>ursltn</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>0</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general_settings translate="label" module="ursltn_webgains">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment><![CDATA[
+                        <div style="font-size:10px; float:right;">Created by: <a href="https://ur-sltn.com/" target="_blank" style="color:#ea7601; text-decoration:underline;">Ur-Sltn LTD</a></div>
+                    ]]>
+                    </comment>
+                    <fields>
+                        <version translate="label" module="ursltn_webgains">
+                            <label>Version</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>ursltn_webgains/adminhtml_version</frontend_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                        <active translate="label" module="ursltn_webgains">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                    </fields>
+                </general_settings>
+            </groups>
+        </ursltn_webgains>
+    </sections>
+</config>
