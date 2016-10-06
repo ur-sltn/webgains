@@ -36,11 +36,37 @@
                 <class>UrSltn_Webgains_Model</class>
             </ursltn_webgains>
         </models>
+        <resources>
+            <ursltn_webgains_setup>
+                <setup>
+                    <module>UrSltn_Webgains</module>
+                </setup>
+            </ursltn_webgains_setup>
+        </resources>
     </global>
+    <crontab>
+        <jobs>
+            <process_ursltn_webgains_export_products>
+                <schedule>
+                    <cron_expr>0 */5 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>ursltn_webgains/observer::exportProducts</model>
+                </run>
+            </process_ursltn_webgains_export_products>
+        </jobs>
+    </crontab>
     <default>
         <ursltn_webgains>
-            <active>1</active>
-            <debug>1</debug>
+            <general_settings>
+                <active>1</active>
+                <debug>1</debug>
+            </general_settings>
+            <product_export>
+                <active>1</active>
+                <format>csv</format>
+                <cron_frequency>D</cron_frequency>
+            </product_export>
         </ursltn_webgains>
     </default>
 </config>

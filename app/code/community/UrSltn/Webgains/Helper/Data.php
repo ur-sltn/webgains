@@ -13,6 +13,9 @@
  * @author     Shaughn Le Grange - Hatlen <me@shaughn.pro>
  */
 
+/**
+ * Class UrSltn_Webgains_Helper_Data
+ */
 class UrSltn_Webgains_Helper_Data extends Mage_Core_Helper_Abstract
 {
     /**
@@ -20,10 +23,19 @@ class UrSltn_Webgains_Helper_Data extends Mage_Core_Helper_Abstract
      *
      * @var string
      */
-    protected $_generalSettings = 'general_settings';
+    protected $generalSettings = 'general_settings';
+
+    /**
+     * Product export
+     *
+     * @var string
+     */
+    protected $productExport = 'product_export';
 
     /**
      * Get module version
+     *
+     * @return string
      */
     public function getModuleVersion()
     {
@@ -35,6 +47,7 @@ class UrSltn_Webgains_Helper_Data extends Mage_Core_Helper_Abstract
      * Exception logging
      * 
      * @param Exception $e
+     * @return void
      */
     public function exception(Exception $e)
     {
@@ -45,12 +58,26 @@ class UrSltn_Webgains_Helper_Data extends Mage_Core_Helper_Abstract
      * Get config setting
      *
      * @param string $config
-     * @return mixed
+     * @return string
      */
     public function getConfigSetting($config)
     {
         return Mage::getStoreConfig(
-            strtolower($this->_moduleName) . DS . $this->_generalSettings . DS . $config,
+            strtolower($this->_moduleName) . DS . $this->generalSettings . DS . $config,
+            Mage::app()->getStore()
+        );
+    }
+
+    /**
+     * Get product export setting
+     *
+     * @param string $config
+     * @return string
+     */
+    public function getProductExportSetting($config)
+    {
+        return Mage::getStoreConfig(
+            strtolower($this->_moduleName) . DS . $this->productExport . DS . $config,
             Mage::app()->getStore()
         );
     }
@@ -63,5 +90,48 @@ class UrSltn_Webgains_Helper_Data extends Mage_Core_Helper_Abstract
     public function isActive()
     {
         return $this->getConfigSetting('active');
+    }
+
+    /**
+     * Is debug mode active
+     *
+     * @return bool
+     */
+    public function isDebugMode()
+    {
+        return $this->getConfigSetting('debug');
+    }
+
+    /**
+     * Is product export active
+     *
+     * @return bool
+     */
+    public function isProductExportActive()
+    {
+        return $this->getProductExportSetting('active');
+    }
+
+    /**
+     * Get product export format
+     *
+     * @return string
+     */
+    public function getProductExportFormat()
+    {
+        return $this->getProductExportSetting('format');
+    }
+
+    /**
+     * Debug logging
+     *
+     * @param string|string[] $message
+     * @return void
+     */
+    public function debug($message)
+    {
+        if ($this->isDebugMode()) {
+            Mage::log($message, false, strtolower($this->_moduleName) . '-debug.log');
+        }
     }
 }

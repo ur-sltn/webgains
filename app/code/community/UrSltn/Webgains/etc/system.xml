@@ -72,6 +72,79 @@
                         </debug>
                     </fields>
                 </general_settings>
+                <product_export>
+                    <label>Product Export</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <active translate="label" module="ursltn_webgains">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </active>
+                        <format translate="label" module="ursltn_webgains">
+                            <label>Format</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ursltn_webgains/adminhtml_system_config_source_export_format</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </format>
+                        <cron_frequency translate="label" module="ursltn_webgains">
+                            <label>Export Frequency</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ursltn_webgains/adminhtml_system_config_source_cron_frequency</source_model>
+                            <backend_model>ursltn_webgains/adminhtml_system_config_backend_productExportCron</backend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cron_frequency>
+                        <cron_hourly translate="label" module="ursltn_webgains">
+                            <label>Every x Hours</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ursltn_webgains/adminhtml_system_config_source_cron_hours</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <cron_frequency>H</cron_frequency>
+                            </depends>
+                        </cron_hourly>
+                        <cron_minutely translate="label" module="ursltn_webgains">
+                            <label>Every x Minutes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ursltn_webgains/adminhtml_system_config_source_cron_minutes</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <cron_frequency>A</cron_frequency>
+                            </depends>
+                        </cron_minutely>
+                        <cron_time translate="label" module="ursltn_webgains">
+                            <label>Export Start Time</label>
+                            <frontend_type>time</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <cron_frequency separator=",">D,W,M</cron_frequency>
+                            </depends>
+                        </cron_time>
+                    </fields>
+                </product_export>
             </groups>
         </ursltn_webgains>
     </sections>

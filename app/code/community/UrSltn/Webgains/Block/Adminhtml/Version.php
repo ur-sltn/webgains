@@ -13,6 +13,9 @@
  * @author     Shaughn Le Grange - Hatlen <me@shaughn.pro>
  */
 
+/**
+ * Class UrSltn_Webgains_Block_Adminhtml_Version
+ */
 class UrSltn_Webgains_Block_Adminhtml_Version extends Mage_Adminhtml_Block_System_Config_Form_Field
 {
     /**
@@ -20,6 +23,8 @@ class UrSltn_Webgains_Block_Adminhtml_Version extends Mage_Adminhtml_Block_Syste
      *
      * @param Varien_Data_Form_Element_Abstract $element
      * @return string
+     *
+     * @SuppressWarnings("unused")
      */
     protected function _getElementHtml(Varien_Data_Form_Element_Abstract $element)
     {
