@@ -1,2 +1,20 @@
-# webgains
-Webgains integration for Magento 1
+# Webgains integration for Magento 1
+
+Adds ability to export a product feed for Webgains via a scheduled cron and a Webgains tracking tag to all successful
+orders.
+
+Note that while this extension is now considered *stable*, it is strongly
+recommended that it be tested on a development/staging site before deploying
+on a production site.
+
+## Features
+
+  * Export product feed in CSV / XML format
+  * Webgains tracking tag for successful orders
+
+## Compatibility
+
+  * Magento Community Edition 1.7.0.1 - 1.9.2.4
+  * Magento Enterprise Edition 1.11.x - 1.14.2.4
+
+## [Change Log] (CHANGELOG.md)
