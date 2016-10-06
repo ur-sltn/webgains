@@ -17,4 +17,14 @@ on a production site.
   * Magento Community Edition 1.7.0.1 - 1.9.2.4
   * Magento Enterprise Edition 1.11.x - 1.14.2.4
 
+## Installation
+
+**Method 1:**
+
+Install via modman:
+
+```sh
+modman clone https://github.com/ur-sltn/webgains.git
+```
+
 ## [Change Log] (CHANGELOG.md)
