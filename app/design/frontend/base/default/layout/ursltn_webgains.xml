@@ -19,10 +19,10 @@
     One Page Checkout Success
     -->
     <checkout_onepage_success>
-        <reference name="content">
+        <reference name="head">
             <block type="ursltn_webgains/checkout_success_tracking"
                    name="checkout.success.tracking"
-                   template="ursltn_webgains/checkout/success/tracking.phtml"/>
+                   template="ursltn_webgains/checkout/success/tracking.phtml" toHtml="-"/>
         </reference>
     </checkout_onepage_success>
 </layout>

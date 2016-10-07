@@ -13,8 +13,19 @@
  * @author     Shaughn Le Grange - Hatlen <me@shaughn.pro>
  */
 ?>
-<script>
-    //<![CDATA[
-    console.log('test');
-    //]]>
-</script>
+<?php /** @var UrSltn_Webgains_Block_Checkout_Success_Tracking $this */ ?>
+<?php if ($this->helper('ursltn_webgains')->isTrackingActive()): ?>
+    <?php $trackingCode = $this->getTrackingCode(); ?>
+
+    <?php if (!empty($trackingCode)): ?>
+        <?php $universalVar = @json_encode($trackingCode); ?>
+        <?php if ($universalVar): ?>
+            <script>
+                //<![CDATA[
+                window.universal_variable = <?php echo $universalVar; ?>;
+                //]]>
+            </script>
+            <script src="//d3c3cq33003psk.cloudfront.net/opentag-163059-webgains.js" async defer></script>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>

@@ -33,6 +33,13 @@ class UrSltn_Webgains_Helper_Data extends Mage_Core_Helper_Abstract
     protected $productExport = 'product_export';
 
     /**
+     * Tracking settings
+     *
+     * @var string
+     */
+    protected $trackingSettings = 'tracking_settings';
+
+    /**
      * Get module version
      *
      * @return string
@@ -78,6 +85,20 @@ class UrSltn_Webgains_Helper_Data extends Mage_Core_Helper_Abstract
     {
         return Mage::getStoreConfig(
             strtolower($this->_getModuleName()) . DS . $this->productExport . DS . $config,
+            Mage::app()->getStore()
+        );
+    }
+
+    /**
+     * Get tracking setting
+     *
+     * @param string $config
+     * @return string
+     */
+    public function getTrackingSetting($config)
+    {
+        return Mage::getStoreConfig(
+            strtolower($this->_getModuleName()) . DS . $this->trackingSettings . DS . $config,
             Mage::app()->getStore()
         );
     }
@@ -140,6 +161,26 @@ class UrSltn_Webgains_Helper_Data extends Mage_Core_Helper_Abstract
     public function getProductExportProfile()
     {
         return $this->getProductExportSetting('profile');
+    }
+
+    /**
+     * Is tracking active
+     *
+     * @return bool
+     */
+    public function isTrackingActive()
+    {
+        return ($this->getTrackingSetting('active') && $this->getTrackingEventId())? true : false;
+    }
+
+    /**
+     * Is tracking event ID
+     *
+     * @return string
+     */
+    public function getTrackingEventId()
+    {
+        return $this->getTrackingSetting('event_id');
     }
 
     /**
