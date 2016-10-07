@@ -1,3 +1,4 @@
 app/code/community/UrSltn/Webgains app/code/community/UrSltn/Webgains
 app/etc/modules/UrSltn_Webgains.xml app/etc/modules/UrSltn_Webgains.xml
 app/design/frontend/base/default/layout/ursltn_webgains.xml app/design/frontend/base/default/layout/ursltn_webgains.xml
+app/design/frontend/base/default/template/ursltn_webgains/checkout/success/tracking.phtml app/design/frontend/base/default/template/ursltn_webgains/checkout/success/tracking.phtml
