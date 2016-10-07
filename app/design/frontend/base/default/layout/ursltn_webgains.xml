@@ -25,4 +25,15 @@
                    template="ursltn_webgains/checkout/success/tracking.phtml" toHtml="-"/>
         </reference>
     </checkout_onepage_success>
+    <!--
+    Multi address shipping checkout success
+    -->
+    <checkout_multishipping_success>
+        <reference name="head">
+            <block type="ursltn_webgains/checkout_success_tracking"
+                   name="checkout.success.tracking"
+                   template="ursltn_webgains/checkout/success/tracking.phtml" toHtml="-"/>
+        </reference>
+    </checkout_multishipping_success>
+
 </layout>
