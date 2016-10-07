@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Ur-Sltn Webgains
+ *
+ * NOTICE OF LICENSE
+ *
+ * Private Proprietary Software (https://ur-sltn.com/terms-of-service.php)
+ *
+ * @category   UrSltn
+ * @package    UrSltn_Webgains
+ * @copyright  Copyright (c) 2016 Ur-Sltn LTD (https://ur-sltn.com)
+ * @license    https://ur-sltn.com/terms-of-service.php  Private Proprietary Software
+ * @author     Shaughn Le Grange - Hatlen <me@shaughn.pro>
+ */
+-->
+<layout version="0.1.0">
+    <!--
+    One Page Checkout Success
+    -->
+    <checkout_onepage_success>
+        <reference name="content">
+            <block type="ursltn_webgains/checkout_success_tracking"
+                   name="checkout.success.tracking"
+                   template="ursltn_webgains/checkout/success/tracking.phtml"/>
+        </reference>
+    </checkout_onepage_success>
+</layout>

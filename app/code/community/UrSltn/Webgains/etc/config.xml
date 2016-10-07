@@ -44,6 +44,15 @@
             </ursltn_webgains_setup>
         </resources>
     </global>
+    <frontend>
+        <layout>
+            <updates>
+                <ursltn_webgains>
+                    <file>ursltn_webgains.xml</file>
+                </ursltn_webgains>
+            </updates>
+        </layout>
+    </frontend>
     <crontab>
         <jobs>
             <process_ursltn_webgains_export_products>
@@ -64,7 +73,8 @@
             </general_settings>
             <product_export>
                 <active>1</active>
-                <format>csv</format>
+                <default_delivery_cost>0.00</default_delivery_cost>
+                <default_delivery_period>2 - 5 Days</default_delivery_period>
                 <cron_frequency>D</cron_frequency>
             </product_export>
         </ursltn_webgains>

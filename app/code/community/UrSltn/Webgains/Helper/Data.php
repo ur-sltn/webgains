@@ -63,7 +63,7 @@ class UrSltn_Webgains_Helper_Data extends Mage_Core_Helper_Abstract
     public function getConfigSetting($config)
     {
         return Mage::getStoreConfig(
-            strtolower($this->_moduleName) . DS . $this->generalSettings . DS . $config,
+            strtolower($this->_getModuleName()) . DS . $this->generalSettings . DS . $config,
             Mage::app()->getStore()
         );
     }
@@ -77,7 +77,7 @@ class UrSltn_Webgains_Helper_Data extends Mage_Core_Helper_Abstract
     public function getProductExportSetting($config)
     {
         return Mage::getStoreConfig(
-            strtolower($this->_moduleName) . DS . $this->productExport . DS . $config,
+            strtolower($this->_getModuleName()) . DS . $this->productExport . DS . $config,
             Mage::app()->getStore()
         );
     }
@@ -113,13 +113,33 @@ class UrSltn_Webgains_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
-     * Get product export format
+     * Get default delivery cost
      *
      * @return string
      */
-    public function getProductExportFormat()
+    public function getDefaultDeliveryCost()
     {
-        return $this->getProductExportSetting('format');
+        return $this->getProductExportSetting('default_delivery_cost');
+    }
+
+    /**
+     * Get default delivery period
+     *
+     * @return string
+     */
+    public function getDefaultDeliveryPeriod()
+    {
+        return $this->getProductExportSetting('default_delivery_period');
+    }
+
+    /**
+     * Get product export profile
+     *
+     * @return string
+     */
+    public function getProductExportProfile()
+    {
+        return $this->getProductExportSetting('profile');
     }
 
     /**

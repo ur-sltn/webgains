@@ -21,43 +21,32 @@ class UrSltn_Webgains_Model_Export
     /**
      * Export products
      *
-     * @param string $format
+     * @param string|int $profileId
      * @return void
      * @throws Mage_Core_Exception
      */
-    public function products($format)
+    public function products($profileId)
     {
-        $products = Mage::getModel('catalog/product')->getCollection();
-        $products->addAttributeToSelect('*');
-        $products->addAttributeToFilter('status', 1);
+        $profile = Mage::getModel('dataflow/profile');
 
-        if ($products->getSize()) {
-            foreach ($products as $product) {
+        $profile->load($profileId);
 
-            }
+        if (!$profile->getId()) {
+            Mage::throwException('Unable to load export profile.');
         }
-    }
 
-    public function formatCsv()
-    {
-        $format = [
-            'ProductID'             => 'sku', // Mandatory
-            'Name'                  => 'name', // Mandatory
-            'Description'           => 'description', // Mandatory
-            'Price'                 => 'price', // Mandatory (no currency. use decimal point ony)
-            'Deeplink'              => 'product_url', // Mandatory
-            'Image_URL'             => 'image_url', // Mandatory
-            'Category'              => 'category_name', // Mandatory
-            'Delivery_cost'         => 'delivery_cost', // Mandatory
-            'Delivery_time'         => 'delivery_period', // Mandatory
-            'Extra_price_field'     => '', // wholesale prices or specials
-            'Thumbnail_image_URL'   => '',
-            'Manufacturer'          => '', //(e.g. Sony).
-            'Brand'                 => '', //(e.g. PlayStation).
-            'Related_product_IDs'   => '', //(e.g. "ft567|fg876|fu987").
-            'Promotions'            => '',
-            'Availability'          => '', //Stock level number or "in stock".
-            'Best_sellers'          => '' //leave blank for now
-        ];
+        if ($profile->getDirection() !== 'export') {
+            Mage::throwException('Invalid export profile specified.');
+        }
+
+        // Prevent duplicate runs
+        if (Mage::registry('current_convert_profile') instanceof Mage_Dataflow_Model_Profile) {
+            throw new UrSltn_Webgains_Exception(
+                'Product export aborted. It looks like the profile has already run in this session.'
+            );
+        }
+
+        Mage::register('current_convert_profile', $profile);
+        $profile->run();
     }
 }

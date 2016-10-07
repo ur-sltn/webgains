@@ -35,7 +35,16 @@ class UrSltn_Webgains_Model_Observer
 
         if ($this->helper()->isProductExportActive()) {
             try {
-                Mage::getModel('ursltn_webgains/export')->products($this->helper()->getProductExportFormat());
+                Mage::getModel('ursltn_webgains/export')->products($this->helper()->getProductExportProfile());
+                $batchModel = Mage::getSingleton('dataflow/batch');
+
+                $this->helper()->debug(sprintf(
+                    'Product export complete. Profile ID: %s. Batch ID: %s.',
+                    $this->helper()->getProductExportProfile(),
+                    $batchModel->getId()
+                ));
+            } catch (UrSltn_Webgains_Exception $e) {
+                $this->helper()->debug(sprintf('Exception: %s', $e->getMessage()));
             } catch (Exception $e) {
                 $this->helper()->exception($e);
             }

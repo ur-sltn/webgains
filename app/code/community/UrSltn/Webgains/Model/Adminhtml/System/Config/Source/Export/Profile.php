@@ -14,9 +14,9 @@
  */
 
 /**
- * Class UrSltn_Webgains_Model_Adminhtml_System_Config_Source_Export_Format
+ * Class UrSltn_Webgains_Model_Adminhtml_System_Config_Source_Export_Profile
  */
-class UrSltn_Webgains_Model_Adminhtml_System_Config_Source_Export_Format
+class UrSltn_Webgains_Model_Adminhtml_System_Config_Source_Export_Profile
 {
     /**
      * Options
@@ -24,12 +24,6 @@ class UrSltn_Webgains_Model_Adminhtml_System_Config_Source_Export_Format
      * @var string[] $options
      */
     protected static $options = [];
-
-    /**#@+
-     * Format config
-     */
-    const FORMAT_CSV = 'csv';
-    const FORMAT_XML = 'xml';
 
     /**
      * To option array
@@ -39,16 +33,25 @@ class UrSltn_Webgains_Model_Adminhtml_System_Config_Source_Export_Format
     public function toOptionArray()
     {
         if (empty(self::$options)) {
+
+            $profiles = Mage::getModel('dataflow/profile')->getCollection()
+                ->addFieldToFilter('direction', ['eq' => 'export']);
+
             self::$options = [
                 [
-                    'label' => Mage::helper('ursltn_webgains')->__('CSV'),
-                    'value' => self::FORMAT_CSV
-                ],
-                [
-                    'label' => Mage::helper('ursltn_webgains')->__('XML'),
-                    'value' => self::FORMAT_XML
+                    'label' => '',
+                    'value' => ''
                 ]
             ];
+
+            if ($profiles->getSize()) {
+                foreach ($profiles as $profile) {
+                    self::$options[] = [
+                        'label' => $profile->getName(),
+                        'value' => $profile->getId()
+                    ];
+                }
+            }
         }
 
         return self::$options;
