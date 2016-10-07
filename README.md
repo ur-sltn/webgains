@@ -10,7 +10,7 @@ on a production site.
 ## Features
 
   * Export product feed in CSV / XML format
-  * Webgains tracking tag for successful orders
+  * Webgains affiliate tracking tag for successful orders (works on one page checkout and multi address shipping checkout)
 
 ## Compatibility
 
@@ -31,7 +31,13 @@ modman clone https://github.com/ur-sltn/webgains.git
   * Allow template symlinks in Magento admin:
 
 ```
-Admin -> System -> Configuration -> [Advanced] Developer -> [Template Settings] Allow Symlinks: Yes
+Admin -> System -> Configuration -> [ADVANCED] Developer -> [Template Settings] Allow Symlinks: Yes
+```
+
+## Admin Configuration
+
+```
+Admin -> System -> Configuration -> [UR-SLTN LTD] Webgains
 ```
 
 ## [Change Log] (CHANGELOG.md)
