@@ -3,6 +3,10 @@ CHANGELOG
 
 [2016-10-07]
 
+ * Added tracking code to multishipping success - f7935efd0e357f878a4e65a96eef30168a6af143
+ * Added webgains tracking code. - de8431b93d64ca4e53430e0d55c6b6e6c592cb5c
+ * Updated modman and add app/design/frontend/base/default/template/ursltn_webgains/checkout/success/tracking.phtml template. - 4886c68877e8c9ad5c5e79c591009d1277789f4e
+ * Various updates: Update dataflow profile, add profile mapper and parser, Add default exception class, update observer cron export, add checkout success layout. - 56bba7da0fa6a312e47a72b3564ece50100a22ff
  * Added cron + cron config, export model, webgains dataflow profile. - 46e5e588bce952cdfd79682cc06978af0e30b490
 
 [2016-10-06]
