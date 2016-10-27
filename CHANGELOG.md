@@ -1,6 +1,12 @@
 CHANGELOG
 ----------------------
 
+[2016-10-27]
+
+ * Bumped version to 1.0.1 - 68bfe698314c649550482c390d66f76356c94818
+ * Updated tracking block. - 5b95c8aceb6a540c1750eed45f837d516bb7abed
+ * Added tracking to every page and targeted certain tracking variables to the checkout success pages. - e0a4fc66fcea9aff34112f28076ae854b62332fe
+
 [2016-10-07]
 
  * Added tracking code to multishipping success - f7935efd0e357f878a4e65a96eef30168a6af143
