@@ -15,32 +15,14 @@
  */
 -->
 <layout version="0.1.0">
+    <!--
+    Default all pages
+    -->
     <default>
         <reference name="head">
-            <block type="ursltn_webgains/checkout_success_tracking"
-                   name="checkout.success.tracking"
-                   template="ursltn_webgains/checkout/success/tracking.phtml" toHtml="-"/>
+            <block type="ursltn_webgains/tracking"
+                   name="ursltn.webgains.tracking"
+                   template="ursltn_webgains/tracking.phtml" toHtml="-"/>
         </reference>
     </default>
-    <!--
-    One Page Checkout Success
-    -->
-    <checkout_onepage_success>
-        <reference name="head">
-            <block type="ursltn_webgains/checkout_success_tracking"
-                   name="checkout.success.tracking"
-                   template="ursltn_webgains/checkout/success/tracking.phtml" toHtml="-"/>
-        </reference>
-    </checkout_onepage_success>
-    <!--
-    Multi address shipping checkout success
-    -->
-    <checkout_multishipping_success>
-        <reference name="head">
-            <block type="ursltn_webgains/checkout_success_tracking"
-                   name="checkout.success.tracking"
-                   template="ursltn_webgains/checkout/success/tracking.phtml" toHtml="-"/>
-        </reference>
-    </checkout_multishipping_success>
-
 </layout>

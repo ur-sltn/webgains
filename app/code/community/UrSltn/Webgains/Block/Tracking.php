@@ -13,8 +13,10 @@
  * @author     Shaughn Le Grange - Hatlen <me@shaughn.pro>
  */
 
-
-class UrSltn_Webgains_Block_Checkout_Success_Tracking extends Mage_Core_Block_Template
+/**
+ * Class UrSltn_Webgains_Block_Tracking
+ */
+class UrSltn_Webgains_Block_Tracking extends Mage_Core_Block_Template
 {
     /**
      * Get tracking code
