@@ -23,56 +23,59 @@ class UrSltn_Webgains_Block_Checkout_Success_Tracking extends Mage_Core_Block_Te
      */
     public function getTrackingCode()
     {
-        $lastOrderId = Mage::getSingleton('checkout/session')->getData('last_order_id');
-        $order = Mage::getSingleton('sales/order');
-        $order->load($lastOrderId);
-
+        $action = Mage::app()->getFrontController()->getAction()->getFullActionName();
         $trackingCode = [];
 
-        if ($order->getId()) {
-            /** @var UrSltn_Webgains_Helper_Data $helper */
-            $helper = $this->helper('ursltn_webgains');
+        if ($action == 'checkout_onepage_success' || $action == 'checkout_multishipping_success') {
+            $lastOrderId = Mage::getSingleton('checkout/session')->getData('last_order_id');
+            $order = Mage::getSingleton('sales/order');
+            $order->load($lastOrderId);
 
-            $lineItems = [];
+            if ($order->getId()) {
+                /** @var UrSltn_Webgains_Helper_Data $helper */
+                $helper = $this->helper('ursltn_webgains');
 
-            $items = $order->getAllItems();
+                $lineItems = [];
 
-            if (!empty($items)) {
-                /** @var Mage_Sales_Model_Order_Item $item */
-                foreach ($items as $item) {
-                    $lineItems[] = [
-                        'product'  => [
-                            'id'            => $item->getProduct()->getId(),
-                            'name'          => $item->getName(),
-                            'unit_price'    => (float)$item->getPrice(),
-                            'voucher'       => '',
-                            'event_id'      => $helper->getTrackingEventId()
+                $items = $order->getAllItems();
+
+                if (!empty($items)) {
+                    /** @var Mage_Sales_Model_Order_Item $item */
+                    foreach ($items as $item) {
+                        $lineItems[] = [
+                            'product'  => [
+                                'id'            => $item->getProduct()->getId(),
+                                'name'          => $item->getName(),
+                                'unit_price'    => (float)$item->getPrice(),
+                                'voucher'       => '',
+                                'event_id'      => $helper->getTrackingEventId()
+                            ],
+                            'quantity' => (float)$item->getQtyOrdered(),
+                            'subtotal' => (float)$item->getBaseRowTotal()
+                        ];
+                    }
+                }
+
+                if (!empty($lineItems)) {
+                    $trackingCode = [
+                        'version'       => '1.2',
+                        'page'          => ['type' => ''],
+                        'user'          => [
+                            'user_id'   => $order->getCustomerId(),
+                            'language'  => Mage::getStoreConfig(Mage_Core_Model_Locale::XML_PATH_DEFAULT_LOCALE)
                         ],
-                        'quantity' => (float)$item->getQtyOrdered(),
-                        'subtotal' => (float)$item->getBaseRowTotal()
+                        'transaction'   => [
+                            'event_id'      => $helper->getTrackingEventId(),
+                            'order_id'      => $order->getIncrementId(),
+                            'currency'      => $order->getOrderCurrencyCode(),
+                            'comment'       => '',
+                            'checksum'      => '',
+                            'total'         => (float)$order->getSubtotal(),
+                            'vouchers'      => [$order->getDiscountDescription()],
+                            'line_items'    => $lineItems
+                        ]
                     ];
                 }
-            }
-
-            if (!empty($lineItems)) {
-                $trackingCode = [
-                    'version'       => '1.2',
-                    'page'          => ['type' => ''],
-                    'user'          => [
-                        'user_id'   => $order->getCustomerId(),
-                        'language'  => Mage::getStoreConfig(Mage_Core_Model_Locale::XML_PATH_DEFAULT_LOCALE)
-                    ],
-                    'transaction'   => [
-                        'event_id'      => $helper->getTrackingEventId(),
-                        'order_id'      => $order->getIncrementId(),
-                        'currency'      => $order->getOrderCurrencyCode(),
-                        'comment'       => '',
-                        'checksum'      => '',
-                        'total'         => (float)$order->getSubtotal(),
-                        'vouchers'      => [$order->getDiscountDescription()],
-                        'line_items'    => $lineItems
-                    ]
-                ];
             }
         }
 
