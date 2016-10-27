@@ -17,7 +17,7 @@
 <config>
     <modules>
         <UrSltn_Webgains>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </UrSltn_Webgains>
     </modules>
     <global>
