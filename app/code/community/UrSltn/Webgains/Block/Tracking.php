@@ -30,6 +30,7 @@ class UrSltn_Webgains_Block_Tracking extends Mage_Core_Block_Template
 
         if ($action == 'checkout_onepage_success' || $action == 'checkout_multishipping_success') {
             $lastOrderId = Mage::getSingleton('checkout/session')->getData('last_order_id');
+            /** @var Mage_Sales_Model_Order $order */
             $order = Mage::getSingleton('sales/order');
             $order->load($lastOrderId);
 
@@ -48,8 +49,8 @@ class UrSltn_Webgains_Block_Tracking extends Mage_Core_Block_Template
                             'product'  => [
                                 'id'            => $item->getProduct()->getId(),
                                 'name'          => $item->getName(),
-                                'unit_price'    => (float)$item->getPrice(),
-                                'voucher'       => '',
+                                'unit_price'    => (float)$item->getPriceInclTax(),
+                                'voucher'       => $order->getDiscountDescription(),
                                 'event_id'      => $helper->getTrackingEventId()
                             ],
                             'quantity' => (float)$item->getQtyOrdered(),
@@ -72,7 +73,7 @@ class UrSltn_Webgains_Block_Tracking extends Mage_Core_Block_Template
                             'currency'      => $order->getOrderCurrencyCode(),
                             'comment'       => '',
                             'checksum'      => '',
-                            'total'         => (float)$order->getSubtotal(),
+                            'total'         => (float)$order->getGrandTotal(),
                             'vouchers'      => [$order->getDiscountDescription()],
                             'line_items'    => $lineItems
                         ]
