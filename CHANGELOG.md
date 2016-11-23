@@ -1,6 +1,10 @@
 CHANGELOG
 ----------------------
 
+[2016-11-23]
+
+ * Include tax in item unit price and set total to grand total for tracking string. - b1337088de25a1b1291a16bce279efdeb89f3bec
+
 [2016-10-27]
 
  * Bumped version to 1.0.1 - 68bfe698314c649550482c390d66f76356c94818
