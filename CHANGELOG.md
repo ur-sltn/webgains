@@ -3,6 +3,7 @@ CHANGELOG
 
 [2016-11-23]
 
+ * Bump version 1.0.2 - 5e6e1bb47d7051aaaab984c22553453ad6f1923e
  * Include tax in item unit price and set total to grand total for tracking string. - b1337088de25a1b1291a16bce279efdeb89f3bec
 
 [2016-10-27]
