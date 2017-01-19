@@ -60,6 +60,20 @@ class UrSltn_Webgains_Block_Tracking extends Mage_Core_Block_Template
                 }
 
                 if (!empty($lineItems)) {
+                    $subtotal = $order->getSubtotal();
+                    $tax = 0;
+                    $shipping = 0;
+
+                    if ($helper->isOrderTotalInclTax()) {
+                        $tax = $order->getTaxAmount();
+                    }
+
+                    if ($helper->isOrderTotalInclShipping()) {
+                        $shipping = $order->getSubtotalInclTax();
+                    }
+
+                    $total = $subtotal + $tax + $shipping;
+
                     $trackingCode = [
                         'version'       => '1.2',
                         'page'          => ['type' => ''],
@@ -73,7 +87,8 @@ class UrSltn_Webgains_Block_Tracking extends Mage_Core_Block_Template
                             'currency'      => $order->getOrderCurrencyCode(),
                             'comment'       => '',
                             'checksum'      => '',
-                            'total'         => (float)$order->getGrandTotal(),
+                            //'total'         => (float)$order->getGrandTotal(),
+                            'total'         => (float)$total,
                             'vouchers'      => [$order->getDiscountDescription()],
                             'line_items'    => $lineItems
                         ]

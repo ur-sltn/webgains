@@ -184,6 +184,26 @@ class UrSltn_Webgains_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
+     * Is order total including tax
+     *
+     * @return bool
+     */
+    public function isOrderTotalInclTax()
+    {
+        return $this->getTrackingSetting('order_total_incl_tax');
+    }
+
+    /**
+     * Is order total including shipping
+     *
+     * @return bool
+     */
+    public function isOrderTotalInclShipping()
+    {
+        return $this->getTrackingSetting('order_total_incl_shipping');
+    }
+
+    /**
      * Debug logging
      *
      * @param string|string[] $message
