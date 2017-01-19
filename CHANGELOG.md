@@ -3,6 +3,7 @@ CHANGELOG
 
 [2017-01-19]
 
+ * Bumped to version 1.0.4 - 9959772a9246f409f7dac89e004eed3626c914c0
  * Added admin settings Order Total Includes Tax (yes/no), Order Total Includes Shipping (yes/no) to tracking settings and this will set the total that is tracked based off those settings. - 1ac626a56f907a408954453030f02dacf3faa17f
 
 [2016-11-24]
