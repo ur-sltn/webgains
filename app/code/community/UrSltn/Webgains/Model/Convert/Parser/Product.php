@@ -101,6 +101,8 @@ class UrSltn_Webgains_Model_Convert_Parser_Product extends Mage_Catalog_Model_Co
                 $row['image_url'] = (string)Mage::helper('catalog/image')->init($product, 'image')->resize(265);
             }
 
+            $row['description'] = strip_tags($product->getData('description'));
+
             foreach ($product->getData() as $field => $value) {
                 if (in_array($field, $this->_systemFields) || is_object($value)) {
                     continue;
