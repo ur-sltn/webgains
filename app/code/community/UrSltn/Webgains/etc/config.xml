@@ -17,7 +17,7 @@
 <config>
     <modules>
         <UrSltn_Webgains>
-            <version>1.0.5</version>
+            <version>1.0.7</version>
         </UrSltn_Webgains>
     </modules>
     <global>
@@ -43,6 +43,17 @@
                 </setup>
             </ursltn_webgains_setup>
         </resources>
+        <events>
+            <model_save_after>
+                <observers>
+                    <check_convert_parser_product>
+                        <type>singleton</type>
+                        <class>ursltn_webgains/observer</class>
+                        <method>checkConvertParserProduct</method>
+                    </check_convert_parser_product>
+                </observers>
+            </model_save_after>
+        </events>
     </global>
     <frontend>
         <layout>
