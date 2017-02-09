@@ -46,11 +46,11 @@
         <events>
             <model_save_after>
                 <observers>
-                    <check_convert_parser_product>
+                    <update_export_profile>
                         <type>singleton</type>
                         <class>ursltn_webgains/observer</class>
-                        <method>checkConvertParserProduct</method>
-                    </check_convert_parser_product>
+                        <method>updateExportProfile</method>
+                    </update_export_profile>
                 </observers>
             </model_save_after>
         </events>

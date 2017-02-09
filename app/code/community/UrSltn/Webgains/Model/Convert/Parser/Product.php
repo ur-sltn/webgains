@@ -98,7 +98,11 @@ class UrSltn_Webgains_Model_Convert_Parser_Product extends Mage_Catalog_Model_Co
 
             // Set image_url
             if (empty($row['image_url'])) {
-                $row['image_url'] = (string)Mage::helper('catalog/image')->init($product, 'image')->resize(265);
+                try {
+                    $row['image_url'] = (string)Mage::helper('catalog/image')->init($product, 'image')->resize(265);
+                } catch (Exception $e) {
+                    $row['image_url'] = '';
+                }
             }
 
             foreach ($product->getData() as $field => $value) {
@@ -132,7 +136,7 @@ class UrSltn_Webgains_Model_Convert_Parser_Product extends Mage_Catalog_Model_Co
                     continue;
                 }
 
-                $row[$field] = strip_tags($value);
+                $row[$field] = str_replace('&nbsp;', ' ', strip_tags($value));
             }
 
             if ($stockItem = $product->getStockItem()) {
